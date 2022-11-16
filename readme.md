@@ -1,14 +1,18 @@
-# "IOT”
+# SETU HDip Computer Science
 
- HDip Computer Systems and Networks Assignment 02
+HDip Computer Systems and Networks Assignment IOT
 
-## David Roche
+---
+
+## Originator
+
+- David Roche
 
 ## Student ID  
 
 - 93521243
 
-## Readme file for Computer Systems and Networks Assignment on "Network and IOT"  (November - December 2022)
+---
 
 ### **Project Background**
 
@@ -23,6 +27,8 @@ This leads to lost time and lost revenue on farm for the haulier.
 
 - 3) Milk too hot to collect, if the farm vat chiller is malfunctioning or milking has just taken place then the raw milk can be too hot to collect, leading to rescheduled pickup or milk being collected too hot and reducing to overall temperature  and therefore quality of the collected product already in the collection tanker
 
+---
+
 ### **Project Description**
 
 This project will aim to develop a prototype solution to;
@@ -33,6 +39,8 @@ This project will aim to develop a prototype solution to;
 
 - Allow the driver to activate the tank agitator when they leave the depot or previous farm.
 
+---
+
 ### **Tools, Technologies and Equipment**
 
 - The sensors and actuators will connect to an [IOLink](https://io-link.com/en/Technology/what_is_IO-Link.php?thisID=76) Master, with an ethernet interface.
@@ -42,17 +50,19 @@ The IO link master has a built in API to allow for data access.
 
   - Communicate to the IO Link master over TCP reading information using it's API. 
 
-  - Communicate using MQTT to a cloud based service [Mosquito](https://mosquitto.org/) to publish Level, Temperature and Actuator values .
+  - Communicate using MQTT to a cloud based service to publish Level, Temperature and Actuator values .
 
-  - Communicate using MQTT to the same cloud based service to subscribe to an actuator active channel to allow the haulier /driver to activate the agitator remotely if required.
+  - Communicate to a cloud based service to allow the haulier /driver to activate the agitator remotely if required.
 
   - Host a local Web API to allow local access on the network to current Level, Temperature and Actuator values.
 
-- IOLink Mater will be an IFM [AL1420](https://www.ifm.com/ie/en/product/AL1420).
+- IOLink Mater will be an IFM [AL1350](https://www.ifm.com/ie/en/product/AL1350).
 
-- The Raspberry Pi and the IOLinkMaster will be connected to a Teltonkia [RUT955 Industrial Cellular Router](https://teltonika-networks.com/product/rut955/).
+- The Raspberry Pi and the IOLinkMaster will be connected to a Teltonkia [RUT955 Industrial Cellular Router](https://teltonika-networks.com/product/rut955/) which wil provide internet connectivity.
 
-- It is envisaged that this stage that the Raspberry Pi application will be written in Python.
+- It is envisaged that this stage that the Raspberry Pi development will be written in Python.
+
+---
 
 ### **Github Repo**
 
@@ -60,8 +70,11 @@ A repository for the Assignment is here project is here
 
 - [GitHubRepo](https://github.com/RocheDJ/TankCheck)
 
+---
+
 ### **Video**
 
 - [Assessment Video]()
 
+---
 ### **External References**
