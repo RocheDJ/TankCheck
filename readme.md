@@ -17,7 +17,7 @@ HDip Computer Systems and Networks Assignment IOT
 ### **Project Background**
 
 This is an industrial project based in the dairy sector, specifically in the area of milk collection and haulage.
-The proposed system will try to address three specific problems
+The proposed system will try to address three specific problems.
 
 - 1) When a haulier goes to a farm to collect milk, ideally the milk should be agitated to make sure it can be correctly metered.
 This means that the driver has to turn on an agitator inside the bulk tank then wait for a time period until the milk has been correctly agitated.

@@ -1,0 +1,40 @@
+
+<div class="card">
+  <div class="content">
+    <div class="description ui two column grid">
+      <div class="column">
+        <i class="{{icon}}"></i>
+      </div>
+      <div class="column">
+        {{#if value-on}}
+        <a href="/agitatorOff/{{idFarm}}"><i class="big toggle on icon"></i></a>
+        {{/if}}
+        {{#if value-off}}
+        <a href="/agitatorOn/{{idFarm}}"><i class="big toggle off icon"></i></a>
+        {{/if}}
+      </div>
+    </div>
+    <h3 class="ui header">{{title}}</h3>
+    <div class="description">
+      <div class="ui text">  {{captionA}} {{valueA}}</div>
+      <div class="ui text">  {{captionB}} {{valueB}}</div>
+    </div>
+    <div class="description ui one column grid">
+      <div class="column">
+        <div class="ui text">
+          <div class="ui text"> {{captionC}} {{valueC}}</div>
+          <div class="ui text"> {{captionD}} {{valueD}}</div>
+          <div class="ui text"> {{captionE}} {{valueE}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{#if showLinkBtn}}
+    <div class="ui bottom attached button">
+      <a href="https://www.google.ie/maps/place/{{valueA}},{{valueB}}" target="_blank">
+        <i class="map marked icon"></i>Plot On Google Maps
+      </a>
+    </div>
+  {{/if}}
+
+</div>

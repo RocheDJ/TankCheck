@@ -1,0 +1,40 @@
+{
+  "farmCollection": [
+    {
+      "id": "d9ce8c00-124c-11ed-8e2d-1f8227bbef44",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "name": "Meadow Farm",
+      "latitude": 52.16235,
+      "longitude": -7.15244,
+      "current_temp_c": "3.6",
+      "current_level_pc": "45.6",
+      "current_actuator_on": true,
+      "current_actuator_off": false
+    },{
+      "id": "dd9348c00-124c-55ed-8e2d-1f8227bbef88",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "name": "Dale Farm",
+      "latitude": 52.16235,
+      "longitude": -7.15244,
+      "current_temp_c": "2.6",
+      "current_level_pc": "25.6",
+      "current_actuator_on": false,
+      "current_actuator_off": true
+    },{
+      "id": "dd9348c00-124c-55ed-8e2d-1f8227bbef88",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "name": "Hillview Ltd",
+      "latitude": 52.16235,
+      "longitude": -7.15244,
+      "current_temp_c": "4.0",
+      "current_level_pc": "85.6",
+      "current_actuator_on": false,
+      "current_actuator_off": true
+    }
+
+  ]
+
+
+
+
+}

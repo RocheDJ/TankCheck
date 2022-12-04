@@ -1,0 +1,12 @@
+{{#each farms}}
+  <section class="ui stacked segment">
+    <h2 class="ui header">
+      {{name}}
+    </h2>
+    <div class="ui stacked segment">
+      {{> farm-panel}}
+     </div>
+    <a href="/farm/{{id}}" class="ui icon button"> <i class="folder open icon"></i> </a>
+    <a href="/deleteFarm/{{id}}" class="ui icon button"> <i class="trash icon"></i> </a>
+  </section>
+{{/each}}

@@ -1,0 +1,36 @@
+
+{
+    "farmCollection": [
+      {
+        "id": "d9ce8c00-124c-11ed-8e2d-1f8227bbef44",
+        "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
+        "name": "Meadow Farm",
+        "latitude": 52.16235,
+        "longitude": -7.15244,
+        "silo_count":2,
+        "silos":[{
+                "id": "52f4fe00-2b7c-11ed-a780-97353c7cc184"
+                },
+                {
+                "id": "d7b0ed60-295c-11ed-ab5c-677690dff470"
+                 }
+            ]
+      },
+      {
+        "id": "dd9348c00-124c-55ed-8e2d-1f8227bbef88",
+        "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
+        "name": "Dale Farm",
+        "latitude": 52.16235,
+        "longitude": -7.15244,
+        "silo_count":2,
+        "silos":[{
+            "id": "67041670-295a-11ed-85a1-19ab23a1498d"
+            },
+            {
+            "id": "acc60ce0-294b-11ed-9f4c-1178e53fd84e"
+            }
+        ]
+
+      }
+    ]
+  }

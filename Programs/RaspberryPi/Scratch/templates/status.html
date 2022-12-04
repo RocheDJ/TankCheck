@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title>Tank Check Prototype</title>
+    <link href="https://mattduck.github.io/generic-css/css/generic-light.min.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+    <h1>Tank 1 Local Data Summary</h1>
+
+    <h2>Tank 1 Data</h2>
+    <p><strong>Celcius:</strong> {{ celcius }}</p>
+    <p><strong>Fahrenheit:</strong> {{ fahrenheit }}</p>
+    <p><strong>Level:</strong> {{ level }}</p>
+
+    <h2>API Description</h2>
+    <p>For use by developers...</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Resource/Path</th>
+                <th>GET</th>
+                <th>POST</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>/iolink/environment</td>
+                <td>Current Tank Data</td>
+                <td>Not Used</td>
+            </tr>
+            <tr>
+                <td>/iolink/agitator</td>
+                <td>Current agitator state(i.e. on/off)</td>
+                <td>Change agitator state using status query parameter. <br>
+                    e.g. curl -X POST http://YOUR_PI_IP:5000/iolink/agitator?state=on</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
