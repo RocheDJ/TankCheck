@@ -1,0 +1,35 @@
+{{> welcomemenu id='login' }}
+<script>
+  function showPassword() {
+    var x = document.getElementById("txtPassword");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
+</script>
+<div class="ui two column middle aligned grid basic segment">
+  <div class="column">
+    <form class="ui stacked segment form" action="/authenticate" method="POST">
+      <h3 class="ui header">Log-in</h3>
+      <div class="field">
+        <label>Email</label> <input placeholder="Email" name="email">
+      </div>
+      <div class="field">
+        <label>Password</label> <input type="password" name="password" id="txtPassword">
+      </div>
+      <div class="field">
+        <div class="ui toggle checkbox">
+          <input type="checkbox" onclick="showPassword()">
+          <label>Show Password Texts</label>
+        </div>
+      </div>
+      <button class="ui blue submit button">Login</button>
+    </form>
+  </div>
+  <div class="column">
+    <img class="ui image" src="https://cdn.glitch.global/60494b54-4122-43dd-ac8f-fdeb417d7d29/LoGo0016.png?v=1670791773933">
+  </div>
+</div>

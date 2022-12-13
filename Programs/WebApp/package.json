@@ -13,6 +13,8 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
     "express-handlebars": "^5.3.2",
+    "firebase": "^9.14.0",
+    "frappe-charts": "^1.6.2",
     "fs-extra": "^10.0.0",
     "lodash": "^4.17.21",
     "lowdb": "^1.0.0",
@@ -20,7 +22,7 @@
     "winston": "^3.3.3"
   },
   "repository": {
-    "url": "https://github.com/wit-hdip-comp-sci-2021/glitch-template"
+    "url": ""
   },
   "license": "MIT",
   "keywords": [

@@ -1,0 +1,30 @@
+<table class="ui table">
+  <thead>
+  <tr>
+    <th>Date/Time</th>
+    <th>Agitator</th>
+    <th>Temp</th>
+    <th>Level</th>
+    <th>-</th>
+  </tr>
+  </thead>
+  <tbody>
+  {{#each silo.readings}}
+    <tr>
+      <td>
+        {{timestamp}}
+      </td>
+      <td>
+        {{actuator_state}}
+      </td>
+      <td>
+        {{temperature}}
+      </td>
+      <td>
+        {{level_mm}}
+      </td>
+
+    </tr>
+  {{/each}}
+  </tbody>
+</table>

@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 import requests
 import json
+from dotenv import dotenv_values
 
-api_url_Port1 = "http://10.15.1.106/iolinkmaster/port[1]/iolinkdevice/pdin/getdata"
-api_url_Port2 = "http://10.15.1.106/iolinkmaster/port[2]/iolinkdevice/pdin/getdata"
-deviceID = "iolinkmaster1"
 
+conFigSettings = dotenv_values(".env")
+
+api_url_Port1 = conFigSettings['Port1']
+api_url_Port2 = conFigSettings['Port2']
 
 def current_values():
     #read the temp values
@@ -33,5 +35,5 @@ def current_values():
     else:
         fLevel=0.00 # invalid data value
     #return the data
-    msg = {"deviceID": deviceID,"temp":temperature,"level":fLevel}
+    msg = {"temp":temperature,"level":fLevel}
     return msg

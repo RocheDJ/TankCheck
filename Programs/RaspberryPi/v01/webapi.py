@@ -4,17 +4,22 @@ from flask_cors import CORS
 from IOLink import current_values
 import json
 import RPi.GPIO as GPIO
-
+from time import sleep
 #create Flask app instance and apply CORS
 app = Flask(__name__)
 CORS(app)
 
-
 global xAgitator
 
 #setup
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(10, GPIO.OUT)
+try:
+  GPIO.setwarnings(False)
+  GPIO.setmode(GPIO.BOARD)
+  GPIO.setup(10, GPIO.OUT)
+except:
+  print("An exception occurred Configuring GPIO")
+
+
 GPIO.output(10, False)
 
 # local index page
@@ -39,10 +44,11 @@ def current_environment():
 @app.route('/iolink/agitator',methods=['GET'])
 def agitator_get():
     #ToDo make this live read of current value
-    if xAgitator == 0:
-        return '{"state":"off"}'
-    else:
+    state = GPIO.input(10)
+    if state:
         return '{"state":"on"}'
+    else:
+        return '{"state":"off"}'
 
 # API set agitator value
 @app.route('/iolink/agitator',methods=['POST'])
@@ -64,5 +70,6 @@ def light_post():
 
 
 #Run API on port 5000, set debug to True
-app.run(host='0.0.0.0', port=5000, debug=True)
-
+def runWebAPI(fDelay,xDebugMode):
+    sleep(fDelay)
+    app.run(host='0.0.0.0', port=5000, debug=xDebugMode)

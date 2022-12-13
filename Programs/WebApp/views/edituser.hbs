@@ -1,0 +1,62 @@
+{{> menu id="edituser"}}
+<script>
+  function showPasswords() {
+    var x = document.getElementById("oldPassword");
+    var y = document.getElementById("newPassword");
+    var z = document.getElementById("ConfirmPassword");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+    if (y.type === "password") {
+      y.type = "text";
+    } else {
+      y.type = "password";
+    }
+    if (z.type === "password") {
+      z.type = "text";
+    } else {
+      z.type = "password";
+    }
+  }
+</script>
+
+<form class="ui stacked segment form" action="/updateUser" method="POST">
+  <h3 class="ui header">{{title}}</h3>
+  <div class="two fields">
+    <div class="field">
+      <label>First Name</label>
+      <input placeholder="First Name" type="text" name="firstName" value="{{firstName}}" required>
+    </div>
+    <div class="field">
+      <label>Last Name</label>
+      <input placeholder="Last Name" type="text" name="lastName" value="{{lastName}}" required>
+    </div>
+  </div>
+  <div class="field">
+    <label>Email</label>
+    <input placeholder="Email" type="email" name="email" value="{{email}}" required>
+  </div>
+  <div class="field">
+    <label>Old Password</label>
+    <input type="password" name="oldpassword" value="" maxlength="10" minlength="4" id="oldPassword" required>
+  </div>
+  <div class="field">
+    <label>New Password</label>
+    <input type="password" name="newpassword" maxlength="10" minlength="4" id="newPassword" required>
+  </div>
+  <div class="field">
+    <label>New Password Confirm</label>
+    <input type="password" name="confirmpassword" maxlength="10" minlength="4" id="ConfirmPassword" required>
+  </div>
+  <div class="field">
+
+    <div class="ui toggle checkbox">
+      <input type="checkbox" onclick="showPasswords()">
+      <label>Show Password Texts</label>
+    </div>
+
+  </div>
+  <button class="ui blue submit button">Submit</button>
+</form>

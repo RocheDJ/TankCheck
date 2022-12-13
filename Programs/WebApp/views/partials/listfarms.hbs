@@ -3,10 +3,32 @@
     <h2 class="ui header">
       {{name}}
     </h2>
-    <div class="ui stacked segment">
-      {{> farm-panel}}
-     </div>
-    <a href="/farm/{{id}}" class="ui icon button"> <i class="folder open icon"></i> </a>
-    <a href="/deleteFarm/{{id}}" class="ui icon button"> <i class="trash icon"></i> </a>
+
+    {{#each silos}}
+      <div class="ui stacked segment">
+        {{> farm-panel}}
+      <div class="ui two cards">
+          <div class="card">
+            <div class="content">
+              <div class="header">Silo :{{@index}}</div>
+                <div class="description">
+                   {{ config.product}}
+                </div>
+            </div>
+              <div class="ui button">
+                <a href="/silo/{{ config.siloID }}"><i class="folder open icon"></i>View Readings </a>
+              </div>
+          </div>
+        <div class="card">
+          <div class="content">
+            <div class="header">Last Updated</div>
+            <div class="description">
+              {{ readings.[9].timestamp }}
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    {{/each}}
   </section>
 {{/each}}

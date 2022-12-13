@@ -1,21 +1,35 @@
 "use strict";
-
 const logger = require("../utils/logger");
-const farmStore = require('../models/farm-store');
+const fireDB = require('../Data/fireDBInterface.js');
+const accounts = require ('./accounts.js');
 
-//const myFarms = [{name:"Medow Farm", silos:"1"},{name:"Dale Farm", silos:"1"},{name:"Hillview Ltd", silos:"2"}];
+fireDB.fireDBInterface.connectFarm();
+fireDB.fireDBInterface.connectSilo();
+
 const dashboard = {
-  index(request, response) {
-    logger.info("dashboard rendering");
-
+   index(request, response) {
+   logger.info("dashboard rendering");
+   const loggedInUser = accounts.getCurrentUser(request);
+   const myFarms = fireDB.fireDBInterface.getFarms();
    // const myFarms = farmStore.getUserStationsSorted(loggedInUser.id);
-    const myFarms = farmStore.getAllFarms();
-    const viewData = {
-      title: "Silo check Dashboard",
-      farms: myFarms,
-    };
-    response.render("dashboard", viewData);
+   const viewData = {
+       title: "Silo Check Dashboard",
+       farms: myFarms,
+     };
+   response.render("dashboard", viewData);
+ },
+  setOn(request, response){
+    const siloId = request.params.id;
+    fireDB.fireDBInterface.setSiloAgitatorOn(siloId);
+    response.redirect("/dashboard");
+
   },
+  setOff(request, response){
+    const siloId = request.params.id;
+    fireDB.fireDBInterface.setSiloAgitatorOff(siloId);
+    response.redirect("/dashboard");
+
+  }
 };
 
 module.exports = dashboard;

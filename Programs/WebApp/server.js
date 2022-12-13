@@ -5,6 +5,7 @@ const logger = require("./utils/logger");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
+const firebase = require("firebase/compat/app");
 
 const app = express();
 app.use(cookieParser());

@@ -1,32 +1,29 @@
-<div class="ui four doubling inverted cards">
+<div class="ui three doubling inverted cards">
   <! –– Tile 1 -->
-  {{> farm-panel-tile
-    title   =name
-    icon   = "left floated big map marker icon blue"
-    captionA ="Lat :" valueA = latitude
-    captionB ="Lon :" valueB = longitude
-    showLinkBtn = "True"
-  }}
-  <! –– Tile 2 -->
   {{> farm-panel-tile
     title   ="Silo Level"
     icon   = "big water icon white"
-    captionA = "Silo % of Max :" valueA = current_level_pc
+    captionA = "Silo Level   (mm) : " valueA = readings.[9].level_mm
+    captionB = "Capacity (ltr): " valueB = config.max_ltr
+    xShowSwitch = 0
   }}
   <! –– Tile 3 -->
   {{> farm-panel-tile
     title   ="Temp"
     icon   = "big temperature low icon yellow"
-    captionA ="Deg C :" valueA = current_temp_c
+    captionA ="Deg C :" valueA = readings.[9].temperature
+    xShowSwitch = 0
   }}
   <! –– Tile 4 -->
   {{> farm-panel-tile
-    title   ="Actuator"
+    title   ="Agitator"
     icon   = "big cog icon gray"
-    captionA ="Running : " valueA = current_actuator_on
-    value-on = current_actuator_on
-    value-off = current_actuator_off
-    idFarm = id
+    captionA ="Running : " valueA =readings.[9].actuator_state
+    value-on = readings.[9].actuator_state
+    value-off = readings.[9].actuator_state
+    idFarm = config.siloID
+    xShowSwitch = 1
   }}
   <! –– ----- -->
+
 </div>

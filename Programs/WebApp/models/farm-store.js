@@ -1,45 +1,18 @@
 "use strict";
+
 const _ = require("lodash");
 const JsonStore = require("./json-store");
 const sortArrayOfObjects = require("../utils/sort");
 // const stationUtils = require("../utils/stationUtils");
 
 // ####################### FIREBASE ########################################################
-// Your web app's Firebase configuration
-
-const firebaseConfig = {
-  apiKey: "AIzaSyA9VlIuYkEOyuXXLZWayP_KuVbTKOWTDHY",
-  authDomain: "silocheck-ea58e.firebaseapp.com",
-  databaseURL: "https://silocheck-ea58e-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "silocheck-ea58e",
-  storageBucket: "silocheck-ea58e.appspot.com",
-  messagingSenderId: "987989013018",
-  appId: "1:987989013018:web:63a865cbc3856cb23cd7a3"
-};
-
-firebase.initializeApp(firebaseConfig);
-
-// Get a reference to the file storage service
-const storage = firebase.storage();
-// Get a reference to the database service
-const database = firebase.database();
-
-// ####################### FIREBASE ########################################################
 
 const farmStore = {
-
   store: new JsonStore("./models/farm-store.json", { farmCollection: [] }),
   collection: "farmCollection",
-
   getAllFarms() {
     return this.store.findAll(this.collection);
   },
-
-  getFireTest() {
-    return this.store.findAll(this.collection);
-  },
-
-
   getFarm(id) {
     return this.store.findOneBy(this.collection, { id: id });
   },

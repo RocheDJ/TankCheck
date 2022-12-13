@@ -1,0 +1,105 @@
+<div class="ui raised segment" id="chart">
+  <script src="https://unpkg.com/frappe-charts@latest"></script>
+  <script>
+
+    let dataTemp = {
+      labels: [
+        {{#each  silo.readings}}
+          "{{timestamp}}",
+        {{/each}}
+      ],
+      datasets: [
+        {
+          name: "Temperature",
+          type: "line",
+          values: [
+            {{#each  silo.readings}}
+              {{temperature}},
+            {{/each}}
+          ]
+        }
+      ]
+    };
+    let dataLevel = {
+      labels: [
+        {{#each  silo.readings}}
+          "{{timestamp}}",
+        {{/each}}
+      ],
+      datasets: [
+        {
+          name: "Level_MM",
+          type: "line",
+          values: [
+            {{#each  silo.readings}}
+              {{level_mm}},
+            {{/each}}
+          ]
+        }
+      ]
+    };
+
+    let start_date = Date() - 12;
+    let end_date = Date();
+
+      let trendChart = new frappe.Chart("#chart", {
+      data: dataTemp,
+      start: start_date,
+      end: end_date,
+      title: "Trend",
+      type: "line",
+      height: 180,
+      colors: ["red"],
+      valuesOverPoints: 1
+    });
+
+    function selectData() {
+      let sValue = document.getElementById("optTrend").value;
+      let lblUnits = document.getElementById("units");
+      let lblmaxDate = document.getElementById("maxDate");
+
+      switch (sValue) {
+        case "Temperature":
+          trendChart.title = "Temperature Trend ";
+          trendChart.update(dataTemp);
+          lblUnits.textContent = "Unit: Deg C";
+          break;
+
+        case "Level":
+          trendChart.title = "Level Trend ";
+          trendChart.update(dataLevel);
+          lblUnits.textContent = "Unit: mm";
+          break;
+
+
+        default:
+          // code block Default
+          trendChart.title = "Temperature Trend ";
+          trendChart.update(dataTemp);
+          lblUnits.textContent = "Unit: Deg C";
+          break;
+      }
+      lblmaxDate.textContent = trendChart.end;
+    }
+  </script>
+  <div class="ui segment">
+    <div class="ui grid">
+      <div class="four wide column">
+        <p><span class="ui large blue text">Currently Trending</span></p>
+      </div>
+      <div class="four wide column">
+        <select class="ui fluid search dropdown" id="optTrend" onchange="selectData()">
+          <option value="Temperature">Temperature</option>
+          <option value="Level">Level</option>
+        </select>
+      </div>
+      <div class="four wide column">
+        <p><span class="ui large blue text"><label id="units">Unit : Deg C</label> </span></p>
+      </div>
+      <div class="four wide column">
+        <p><span class="ui large blue text"><label id="maxDate"> ------ </label></span></p>
+      </div>
+    </div>
+  </div>
+</div>
+

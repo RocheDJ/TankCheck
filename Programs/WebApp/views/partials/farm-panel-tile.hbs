@@ -6,11 +6,12 @@
         <i class="{{icon}}"></i>
       </div>
       <div class="column">
-        {{#if value-on}}
-        <a href="/agitatorOff/{{idFarm}}"><i class="big toggle on icon"></i></a>
-        {{/if}}
-        {{#if value-off}}
-        <a href="/agitatorOn/{{idFarm}}"><i class="big toggle off icon"></i></a>
+        {{#if xShowSwitch }}
+          {{#if value-on}}
+            <a href="/dashboard/setOff/{{idFarm}}"><i class="big toggle on icon"></i></a>
+          {{else}}
+            <a href="/dashboard/setOn/{{idFarm}}"><i class="big toggle off icon"></i></a>
+          {{/if}}
         {{/if}}
       </div>
     </div>

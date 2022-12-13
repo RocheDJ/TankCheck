@@ -1,7 +1,7 @@
 "use strict";
 
 const logger = require("../utils/logger");
-const farmStore = require("../models/farm-store");
+const fireDB = require('../Data/fireDBInterface.js');
 const uuid = require("uuid");
 const LocalDateTime = require("lodash");
 const axios = require("axios"); //npm install axios
@@ -11,21 +11,20 @@ function padWithZero(num, targetLength) {
   return String(num).padStart(targetLength, "0");
 }
 
-const farm = {
+const silo = {
   index(request, response) {
-    const farmId = request.params.id;
-    const myFarm = farmStore.getFarm(farmId)
-    logger.debug("Farm id = ", farmId);
-
+    const siloId = request.params.id;
+    const mySilo = fireDB.fireDBInterface.getSilo(siloId)
+    logger.debug("Silo id = ", siloId);
     //sort the data for each station in order for trend graph
-    myFarm.readings = sortArrayOfObjects(myFarm.readings,"epocDate","asec");
+     mySilo.readings = sortArrayOfObjects(mySilo.readings,"epocDate","asec");
     const viewData = {
-      name: "Farm",
-      farm: myFarm
+      name: "Silo",
+      silo: mySilo
     };
-
-    response.render("farm", viewData);
+    response.render("silo", viewData);
   },
+
   deleteReading(request, response) {
     const stationId = request.params.id;
     const readingId = request.params.readingid;
@@ -88,4 +87,4 @@ const farm = {
   }
 };
 
-module.exports = farm;
+module.exports = silo;
