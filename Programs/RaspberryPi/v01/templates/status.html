@@ -1,21 +1,9 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html>
-
-<head>
-    <title>Tank Check Prototype</title>
-    <link href="https://mattduck.github.io/generic-css/css/generic-light.min.css" rel="stylesheet" type="text/css"/>
-</head>
-
-<body>
-    <h1>Silo 1 Local Data Summary</h1>
-    <h2>Silo 1 Data</h2>
-    <p><strong>Celcius:</strong> {{ celcius }}</p>
-    <p><strong>Fahrenheit:</strong> {{ fahrenheit }}</p>
-    <p><strong>Level:</strong> {{ level }}</p>
-
-    
-    <script>
+  <head>
+    <title>Silo Check Prototype Local API Interface</title>
+    <link rel="stylesheet" href="/staticfiles/style.css">
+	<script>
         function setOn() {
             navigator.sendBeacon("http://127.0.0.1:5000/iolink/agitator?state=on");
         }
@@ -24,9 +12,32 @@
             navigator.sendBeacon("http://127.0.0.1:5000/iolink/agitator?state=off");
         }
     </script>
-    <h2>Silo 1 Agiator Control </h2>
-    <p> <input type=button onclick= "setOn()" value='Agaitator On'></p>
+  </head>
+  <body>
+	<div class="header">
+			<h1> Local Web Access Page for Silo </h1>
+			<img src="/staticfiles/banner.png" />
+	  </div>
+	 
+<div class="row">
+  <div class="column1">
+    <h2>Silo 1001 Local Data Summary</h2>
+	<img class="image_1" src="/staticfiles/silo.jpg" />
+  </div>
+  
+  <div class="column2">
+    <h2>Readings</h2>
+    <p><strong>Celsius:</strong> {{ celcius }}</p>
+	<p><strong>Fahrenheit:</strong> {{ fahrenheit }}</p>
+	<p><strong>Level mm:</strong> {{ level }}</p>
+  </div> 
+   <div class="column3">
+    <h2>Agitator Control</h2>
+	<p> <input type=button onclick= "setOn()" value='Agaitator On'></p>
     <p><input type=button onclick= "setOff()" value='Agaitator Off'></p>
+  </div>
+</div>
+
     <h2>API Description</h2>
     <p>For use by developers...</p>
     <table>
@@ -51,6 +62,7 @@
             </tr>
         </tbody>
     </table>
-</body>
-
+	
+	
+  </body>
 </html>

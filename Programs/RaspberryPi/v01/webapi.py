@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+#------------------------------------------------------------------------------------------------
+# By: David Roche based on SETU LAB exercieses 
+# Date: December 2022
+# Description : Local Web API for Tank control and monitering on Raspberry Pi
+#------------------------------------------------------------------------------------------------
 from flask import Flask, request, render_template
 from flask_cors import CORS
 from IOLink import current_values
@@ -6,21 +11,16 @@ import json
 import RPi.GPIO as GPIO
 from time import sleep
 #create Flask app instance and apply CORS
-app = Flask(__name__)
+
+#app = Flask(__name__)
+app = Flask(__name__, template_folder='templates', static_folder='staticfiles')
 CORS(app)
 
-global xAgitator
+xAgitator  = 0
 
-#setup
-try:
-  GPIO.setwarnings(False)
-  GPIO.setmode(GPIO.BOARD)
-  GPIO.setup(10, GPIO.OUT)
-except:
-  print("An exception occurred Configuring GPIO")
+iIOChannel =26
 
 
-GPIO.output(10, False)
 
 # local index page
 @app.route('/') 
@@ -44,7 +44,7 @@ def current_environment():
 @app.route('/iolink/agitator',methods=['GET'])
 def agitator_get():
     #ToDo make this live read of current value
-    state = GPIO.input(10)
+    state = GPIO.input(iIOChannel)
     if state:
         return '{"state":"on"}'
     else:
@@ -59,12 +59,12 @@ def light_post():
     if (state=="on"):
          #ToDo make this live write of  value
         xAgitator = 1
-        GPIO.output(10, True)
+        GPIO.output(iIOChannel, True)
         return '{"state":"on"}'
     else: 
         #ToDo make this live write of  value
         xAgitator= 0
-        GPIO.output(10, False)
+        GPIO.output(iIOChannel, False)
         return '{"state":"off"}'
 
 

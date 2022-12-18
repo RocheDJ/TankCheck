@@ -1,0 +1,81 @@
+body {
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+    font-size: small;
+      /* as before - i.e. keep the existing properties as above */
+    line-height: 1.6em;
+  }
+  
+  .header {
+    color: #007e7e;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  
+  /* Create three equal columns that floats next to each other */
+  .column1 {
+    float: left;
+    width: 20.00%;
+    padding: 10px;
+  }
+  
+  .column2 {
+    float: left;
+    width: 40.00%;
+    padding: 10px;
+  }
+  
+  .column3 {
+    float: left;
+    width: 35.00%;
+    padding: 10px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .image_1{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+  }
+  
+  
+  h2 {
+    color: #007e7e;
+    border-bottom: 1px solid black;
+  }
+  
+  h1 {
+    font-size: 150%;
+  }
+  
+  h2 {
+    font-size: 130%;
+  }
+  
+  h3 {
+    font-size: 110%;
+  }
+  
+  
+  
+  p {
+    color: maroon;
+  }
+  
+  .special { color: red; }
+  
+  .fav {
+          color :blue;
+          text-decoration: green wavy underline;
+      }
+      
+  table, th, td {
+    border: 1px solid;
+  }

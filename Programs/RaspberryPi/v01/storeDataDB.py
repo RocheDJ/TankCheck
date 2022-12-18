@@ -1,7 +1,15 @@
+#!/usr/bin/python3
+#------------------------------------------------------------------------------------------------
+# By: David Roche
+# Date: December 2022
+# Description : Link to firebase Data 
+#------------------------------------------------------------------------------------------------
+#--------------------- Linked Libraries -----------------
 import firebase_admin
 from firebase_admin import credentials, firestore, storage, db
 import os
 
+#--------------------- Initalise Firebase ----------------
 cred=credentials.Certificate('./serviceAccountKey.json')
 firebase_admin.initialize_app(cred, {
     'storageBucket': 'silocheck-ea58e.appspot.com' ,
@@ -11,24 +19,18 @@ firebase_admin.initialize_app(cred, {
 bucket = storage.bucket()
 ref = db.reference('/')
 
+
+#--------------------- Functions ----------------
+
+# Read the Desired Agitaor Status form Firebase
 def read_agitator(siloID):
   agitatorSP = ref.child('silo/1001/config/control').get()
   if str(agitatorSP) == "OFF":
      return False   
   else:
-     return True  
-      
-def push_db(deviceID,temperature,level, time):
-  # home_ref = ref.child('silo_data')
-  home_ref = ref.child(deviceID)
-  # Push file reference to image in Realtime DB
-  home_ref.push({
-      'temperature': temperature,
-      'level':level,
-      'timestamp': time}
-  )
+     return True 
 
-# push up the local configuration for the silo to the Web app
+# Push the local configuration data to  Firebase  
 def push_db_silo(siloID,
                 iMax_mm,iMin_mm,
                 iMax_ltr,iMin_ltr,
@@ -46,7 +48,7 @@ def push_db_silo(siloID,
   home_ref = ref.child('silo/' + siloID+"/config")
   home_ref.update({ 'control' : 'OFF'})
 
-# push up the readings up to the database
+# Push the telemetery data to  Firebase   
 def push_db_silo_reading(siloID,iReadcount,
                 fTemperature,iLevel,
                 xActuater,sTime,
