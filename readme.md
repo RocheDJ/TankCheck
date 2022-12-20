@@ -60,7 +60,7 @@ The IO link master has a built in API to allow for data access.
 
 - The Raspberry Pi and the IOLinkMaster will be connected to a Teltonkia [RUT955 Industrial Cellular Router](https://teltonika-networks.com/product/rut955/) which wil provide internet connectivity.
 
-- It is envisaged that this stage that the Raspberry Pi development will be written in Python.
+- The Raspberry Pi development is written in Python.
 
 ---
 
@@ -88,3 +88,15 @@ A demo web app has been developed in Node JS and is deployed here
 
 ---
 ### **External References**
+
+- [HTML and CSS in FLASK](https://thinkinfi.com/flask-adding-html-and-css/)
+
+- [Firebase reading and writing data](https://firebase.google.com/docs/database/web/read-and-write#read_data_once)
+
+- [Python API interrogation](https://realpython.com/api-integration-in-python/)
+
+- [Running Multi Processes in Python](https://superfastpython.com/run-function-in-new-process/)
+
+- [Firebase 101 NoSWL DB management](https://devblogs.microsoft.com/premier-developer/firebase-101-nosql-database-management/)
+
+- [W3 schools Python reference](https://www.w3schools.com/python/python_reference.asp)
