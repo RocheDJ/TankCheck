@@ -6,7 +6,7 @@ const uuid = require("uuid");
 const LocalDateTime = require("lodash");
 const axios = require("axios"); //npm install axios
 const sortArrayOfObjects = require("../utils/sort");
-
+const scale = require("../utils/scaling")
 function padWithZero(num, targetLength) {
   return String(num).padStart(targetLength, "0");
 }
@@ -17,10 +17,17 @@ const silo = {
     const mySilo = fireDB.fireDBInterface.getSilo(siloId)
     logger.debug("Silo id = ", siloId);
     //sort the data for each station in order for trend graph
-     mySilo.readings = sortArrayOfObjects(mySilo.readings,"epocDate","asec");
+    mySilo.readings = sortArrayOfObjects(mySilo.readings,"epocDate","asec");
+
+    let myVolume = scale(mySilo.readings[0].level_mm,
+                      mySilo.config.min_mm,mySilo.config.max_mm,
+                      mySilo.config.min_ltr,mySilo.config.max_ltr);
+    myVolume = Math.round(myVolume*100)/100;
+
     const viewData = {
       name: "Silo",
-      silo: mySilo
+      silo: mySilo,
+      volume : myVolume
     };
     response.render("silo", viewData);
   },

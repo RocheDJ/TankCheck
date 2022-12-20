@@ -12,9 +12,10 @@ const dashboard = {
    const loggedInUser = accounts.getCurrentUser(request);
    const myFarms = fireDB.fireDBInterface.getFarms();
    // const myFarms = farmStore.getUserStationsSorted(loggedInUser.id);
+
    const viewData = {
        title: "Silo Check Dashboard",
-       farms: myFarms,
+       farms   : myFarms,
      };
    response.render("dashboard", viewData);
  },

@@ -18,8 +18,29 @@
       "firstName": "Dave",
       "lastName": "Roche",
       "email": "test@me.com",
-      "password": "secret",
+      "password": "test1234",
       "id": "547ecd00-2aa5-11ed-814c-a3e33baad694"
+    },
+    {
+      "firstName": "Dave",
+      "lastName": "Roche",
+      "email": "dave@kilderry.ie",
+      "password": "123456789",
+      "id": "064db030-807f-11ed-878a-c596cd57cf20"
+    },
+    {
+      "firstName": "Dave",
+      "lastName": "Roche",
+      "email": "test@me.com",
+      "password": "789456123",
+      "id": "2cf7c270-807f-11ed-878a-c596cd57cf20"
+    },
+    {
+      "firstName": "test",
+      "lastName": "me",
+      "email": "test@me.com",
+      "password": "test",
+      "id": "6d838090-807f-11ed-878a-c596cd57cf20"
     }
   ]
 }

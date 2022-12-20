@@ -70,9 +70,17 @@ def publish_Blynk(iLevel,iTemp):
     blynk.virtual_write(1, iTemp) 
     blynk.virtual_write(2,round(get_uptime(),0))
     blynk.virtual_write(3, iLevel)
+    if agitator_state():
+        blynk.virtual_write(4, 1)
+    else:
+        blynk.virtual_write(4, 0)
 
 def agitator_control(xSwitch):
-   GPIO.output(iIOChannel, xSwitch)
+    GPIO.output(iIOChannel, xSwitch)
+    if agitator_state():
+        blynk.virtual_write(4, 1)
+    else:
+        blynk.virtual_write(4, 0)
 
 def agitator_state():
     if (GPIO.input(iIOChannel) == 1) :
@@ -204,6 +212,7 @@ def mainsequence():
                 fAgitatorCountDown = (fAgitatorCountDown - fStepInterval)
                 if (fAgitatorCountDown<0.0):
                     agitator_control(False)
+                    storeDataDB.off_agitator(siloID)# rest the control flag on web db
                     print("Agitator Time out Off")  
             else:
                 fAgitatorCountDown= fOnTimeSetPoint 

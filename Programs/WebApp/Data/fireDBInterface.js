@@ -1,7 +1,7 @@
 "use strict";
 const firebase = require("firebase/compat/app");
 const db = require("firebase/compat/database");
-const uuid = require("uuid");
+
 const logger = require("../utils/logger");
 const sortArrayOfObjects = require("../utils/sort");
 
@@ -21,9 +21,9 @@ const firebaseDB = firebase.database();
 
 let farmArray = [];
 let siloArray = [];
+let volumeArray = [];
 
 const fireDBInterface = {
-
   connectFarm() {
     firebaseDB.ref("farm").on("value",
       function(snapshot) {
@@ -39,12 +39,12 @@ const fireDBInterface = {
     firebaseDB.ref("silo").on("value",
       function(snapshot) {
         siloArray.length = 0;
+        volumeArray.length =0;
         snapshot.forEach(function(childSnapshot) {
           siloArray.push(childSnapshot.val());
-          farmArray[0].silos[0] = childSnapshot.val();
+          farmArray[0].silos[0] = childSnapshot.val();//ToDo: update for many farms
           farmArray[0].silos[0].readings = sortArrayOfObjects(farmArray[0].silos[0].readings, "epocDate");
           logger.info("Silo loaded: ");
-
         });
       });
   },
