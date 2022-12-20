@@ -4,7 +4,7 @@ const logger = require("../utils/logger");
 const fireDB = require('../Data/fireDBInterface.js');
 const uuid = require("uuid");
 const LocalDateTime = require("lodash");
-const axios = require("axios"); //npm install axios
+
 const sortArrayOfObjects = require("../utils/sort");
 const scale = require("../utils/scaling")
 function padWithZero(num, targetLength) {
@@ -62,36 +62,6 @@ const silo = {
     logger.debug("New Reading = ", newReading);
     response.redirect("/station/" + stationId);
   },
-
-  async addAutoReading(request, response) {
-    const stationId = request.params.id;
-    const station = stationStore.getStation(stationId);
-    const api_url = "https://api.openweathermap.org/data/2.5/weather?lat=" + station.latitude + "&lon=" + station.longitude + "&appid=25b8dadd1f0eaed0dd4707048527a093" + "&units=metric";
-    logger.info("rendering new report");
-
-    let now = LocalDateTime.now();
-    const DateUTC = new Date(now).toUTCString();
-    const sDate = (new Date(DateUTC).getFullYear() + "-" + padWithZero(new Date(DateUTC).getMonth(), 2) + "-" + padWithZero(new Date(DateUTC).getDate(), 2)
-      + " " + padWithZero(new Date(DateUTC).getHours(), 2) + ":" + padWithZero(new Date(DateUTC).getMinutes(), 2) + ":" + padWithZero(new Date(DateUTC).getSeconds(), 2));
-
-    const result = await axios.get(api_url);
-    if (result.status === 200) {
-      const reading = result.data;
-      const newReading = {
-        id: uuid.v1(),
-        code: Number(reading.cod),
-        temperature: Number(reading.main.temp),
-        pressure: Number(reading.main.pressure),//Number converts the string to a number
-        windSpeed: Number(reading.wind.speed),//Number converts the string to a number
-        windDirection: Number(reading.wind.deg),//Number converts the string to a number
-        readingDate: sDate,
-        epocDate: now,
-      };
-      stationStore.addReading(stationId, newReading);
-      logger.debug("New Reading = ", newReading);
-    }
-    response.redirect("/station/" + stationId);
-  }
 };
 
 module.exports = silo;
